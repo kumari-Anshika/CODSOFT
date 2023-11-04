@@ -1,0 +1,42 @@
+// java program for Student Grade Calculator
+import java.util.*;
+public class Calculator
+{
+public static void main(String args[])
+{  
+    int sum=0,h=0;
+    float average=0;
+    char grade=' ';
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter the number of subjects of student:");
+    int n=sc.nextInt();
+    int a[]=new int[n];         // array to store marks of n subjects 
+    System.out.println("Enter the marks of students(out of 100) in "+n+" subjects:");
+    for(int i=0;i<n;i++)        // for loop to input marks of each subjects 
+    {    
+        h=sc.nextInt();
+        if(h>=1 && h<=100) 
+        a[i]=h;                // to check whether the entered marks is in the range 1-100
+        else {
+        i--;
+        System.out.println("Invalid input!....Enter marks again");   }
+    }
+    for(int i=0;i<n;i++)       // for loop to calculate total marks
+    {
+        sum=sum+a[i];
+    }
+    average=sum/n;             // to calculate average percentage
+    int avg=(int)average;    // convert average value from decimal to integer and store it into variable avg
+    if(avg>=85 && avg<=100)
+    grade='A';
+    else if(avg>=75 && avg<=84)
+    grade='B';
+    else if(avg>=60 && avg<=74)
+    grade='C';
+    else if(avg>=33 && avg<=59)
+    grade='D';
+    else if(avg<33)
+    grade='F';
+    
+    System.out.println(" Total marks of Student: "+sum+"\n Average percentage of student: "+average+"\n The corresponding grade to the student: "+grade);
+}}
