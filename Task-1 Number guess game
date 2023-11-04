@@ -1,0 +1,46 @@
+// Program in java for a number game
+import java.util.Scanner;
+public class GuessGame
+{
+    public static void numbergame()  //function to implement the number guess game
+    {
+        Scanner ob=new Scanner(System.in);
+        int number=1+(int)(100*Math.random());   // math function to generate the random number 
+        System.out.println("Generate a random number within a specified range 1 to 100 :"+number);
+        //limit the number of guess "guess" in a number of round "round" given by user
+        int round=3,guess=3,guess_number,attempt=0,k=1,flag=0;;
+        while(round>0)
+        {
+            while(guess>0)
+            {  
+            System.out.println("Guess the Number:");
+            guess_number=ob.nextInt();       //taking input
+                if(number==guess_number)   {
+                System.out.println("You guess the correct number after "+attempt+" attempts,Congrats!!");
+                flag=1;
+                break;   }
+                else if(guess_number<number) {
+                System.out.println("The guess_number "+guess_number+" is less than the generated number "+number);
+                attempt++;  }
+                else if(guess_number>number)   {
+                System.out.println("The guess_number "+guess_number+" is greater than the generated number "+number);
+                attempt++;  
+                                               }
+                guess--;
+            }
+            if(flag!=1) {
+            System.out.println("You have exhausted number of guesses for round "+k);   
+                        }
+            k++;    //it count the number of round exhausted
+            round--;
+            guess=3; 
+        }  
+        if(flag!=1)  {
+        System.out.println("You have exhausted all your rounds"); 
+                     }
+    }
+    public static void main(String args[])
+    {
+        numbergame();    //function calling
+    }
+}
