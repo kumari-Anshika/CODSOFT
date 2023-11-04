@@ -1,0 +1,78 @@
+//Program in java to display the ATM interface
+// class for Atm machine
+import java.util.Scanner;
+public class Atm_machine
+{
+    public static int balance;       // define this vaiable globally
+     // implement function to withdraw amount from atm machine
+    public static int withdraw(int balance,int withdraw_amount)
+   {   
+      System.out.println("Perform Withdraw Operation");
+      System.out.println("Withdrawn amount is: "+withdraw_amount);
+      // Conditions for withdrawing amount from atm machine
+       if(withdraw_amount<=balance && withdraw_amount>=100)
+       {
+       balance=balance-withdraw_amount;       // to store the remaining balance in account after withdrawl
+       System.out.println("Thank you for transaction! Please collect your money and atm card.");
+       check_balance(balance);
+      }
+      else
+      {
+          System.out.println("Insufficient balance in your account! you can't withdraw money");
+        }
+    return balance;
+   }
+   // implement function to deposit amount through atm machine
+    public static int deposit(int balance,int deposit_amount)
+   {  
+       System.out.println("Perform Deposit Operation");
+       System.out.println("Deposited amount is: "+deposit_amount);
+       balance=balance + deposit_amount;
+       System.out.println("Thank you for transaction! Your money has successfully deposited.");
+       check_balance(balance);
+       return balance;
+    }
+    // implement function to display the balance of an account
+    public static void check_balance(int balance)    
+    {
+        System.out.println("Perform Balance Check Operation");
+        System.out.println("Balance in an account: "+balance);
+    }
+     public static void main(String args[])                      //main method
+    {
+        Scanner ob=new Scanner(System.in );
+        System.out.println("Enter the current balance of user account:");
+        balance=ob.nextInt();
+        System.out.println("Enter the amount to be withdraw from user account:");
+        int withdraw_amount=ob.nextInt();
+        System.out.println("Enter the amount to be deposited in user account:");
+        int deposit_amount=ob.nextInt();
+         //function calling with parameter
+        check_balance(balance);    
+        balance=withdraw(balance,withdraw_amount);
+        balance=deposit(balance,deposit_amount);
+    }}
+    
+    
+    
+   
+// class for details of user bank account 
+import java.util.*;
+public class Bank_account extends Atm_machine        //uses extends keyword to inherit the class Atm_machine
+{   
+    public static void main(String args[])
+    {
+        Scanner ob=new Scanner(System.in);
+        System.out.println("\n");
+        System.out.println("Bank_account class to acess and modify the account balance connecting with Atm_machine class");
+        System.out.println("Enter the balance of an account:");
+        balance=ob.nextInt();
+        System.out.println("Enter the amount to be withdraw from user account:");
+        int withdraw_amount=ob.nextInt();
+        System.out.println("Enter the amount to be deposited in user account:");
+        int deposit_amount=ob.nextInt();
+        check_balance(balance);    
+        balance=withdraw(balance,withdraw_amount);
+        balance=deposit(balance,deposit_amount);
+    }
+}
